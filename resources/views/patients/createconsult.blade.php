@@ -135,7 +135,7 @@ Add Consultation for Patient Visit
 										<label class="control-label" for="examinationfindings">Examination Findings</label>
 										<div class="pull-right box-tools">
 											<select class="input-xs"  style="height: 25px; line-height: 25px;" name="" id="templatename">
-												<option value="None"  selected="">None</option>
+												<option value="None"  selected="">Select Template</option>
 												@foreach ($templates as $t)
 												<option value="{{$t->templatename}}">{{$t->templatename}}</option>
 												@endforeach

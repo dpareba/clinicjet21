@@ -42,19 +42,21 @@ View/Search Patients with Token Numbers
               <table class="table no-margin text-center">
                 <thead>
                   <tr>
+                  	<th>Token Number</th>
                     <th>Patient Name</th>
                     <th>Primary Phone</th>
                     <th>Patient Code</th>
-                    <th>Token Number</th>
+                    
                   </tr>
                   </thead>
                  <tbody>
 						@endif
             <tr>
+            <td><span class="label label-success">{{$s->token}}</td>
             <td>{{$s->patient->name}} {{$s->patient->midname}} {{$s->patient->surname}}</td>
             <td>{{$s->patient->phoneprimary}}</td>
             <td>{{$s->patient->patientcode}}</td>
-            <td><span class="label label-success">{{$s->token}}</td>
+            
             </tr>
 						<?php $count+=1; ?>
 					@endforeach
