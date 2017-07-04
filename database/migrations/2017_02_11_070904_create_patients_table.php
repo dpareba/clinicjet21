@@ -20,6 +20,7 @@ class CreatePatientsTable extends Migration
             $table->string('surname')->index();
             $table->string('namemidsur')->index();
             $table->string('namesur')->index();
+            $table->boolean('isvalbypass')->default(false);
             $table->date('dob');
             $table->boolean('isapproxage')->default(false);
             $table->string('approxage')->nullable();

@@ -22,6 +22,11 @@ Register new patients in clinic
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 
 					<div class="row">
+						<input type="hidden" id="namemidsur" name="namemidsur" >
+						<input type="hidden" id="namesur" name="namesur" >
+					</div>
+
+					<div class="row">
 						<div class="col-md-4 col-xs-12" style="text-align: center;">
 							<div class="form-group {{ $errors->has('name')?'has-error':''}}">
 								<label class="control-label" for="name" >First Name</label>
@@ -276,6 +281,9 @@ Register new patients in clinic
     //Money Euro
     $("[data-mask]").inputmask();
 
+     $('#namemidsur').val('');
+    $('#namesur').val('');
+
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
     	checkboxClass: 'icheckbox_minimal-blue',
     	radioClass: 'iradio_minimal-blue'
@@ -306,6 +314,45 @@ Register new patients in clinic
     	}
 
     });
+
+    $('#name').on('input',function(){
+  		$('#namemidsur').val('');
+  		$nameval = $('#name').val().trim();
+  		$midval = $('#midname').val().trim();
+  		$surname = $('#surname').val().trim();
+  		$nms = $nameval + $midval + $surname;
+  		$ns = $nameval + $surname; 
+  		$('#namemidsur').val($nms);
+  		$('#namesur').val($ns);
+  		console.log($nms);
+  		console.log($ns);
+  	});
+
+  	$('#midname').on('input',function(){
+  		$('#namemidsur').val('');
+  		$nameval = $('#name').val().trim();
+  		$midval = $('#midname').val().trim();
+  		$surname = $('#surname').val().trim();
+  		$nms = $nameval + $midval + $surname;
+  		$ns = $nameval + $surname;
+  		$('#namemidsur').val($nms);
+  		$('#namesur').val($ns);
+  		console.log($nms);
+  		console.log($ns);
+  	});
+
+  	$('#surname').on('input',function(){
+  		$('#namemidsur').val('');
+  		$nameval = $('#name').val().trim();
+  		$midval = $('#midname').val().trim();
+  		$surname = $('#surname').val().trim();
+  		$nms = $nameval + $midval + $surname;
+  		$ns = $nameval + $surname;
+  		$('#namemidsur').val($nms);
+  		$('#namesur').val($ns);
+  		console.log($nms);
+  		console.log($ns);
+  	});
 
 });
 </script>

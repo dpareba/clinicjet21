@@ -94,7 +94,7 @@ class PatientController extends Controller
             // 'phoneprimary'=>'required|digits:10|unique:patients,phoneprimary',
             // 'phonealternate'=>'required|digits:10|unique:patients,phonealternate',
             'idproof' => 'digits:12|unique:patients,idproof',
-            'phoneprimary'=>'required|digits:10',
+            'phoneprimary'=>'required|digits:10|unique:patients,phoneprimary',
             'phonealternate'=>'required|digits:10',
             'email'=>'email'
             ],[
@@ -106,7 +106,7 @@ class PatientController extends Controller
             'allergies.required'=>'Please enter know allergies.Enter Not known otherwise.',
             'phoneprimary.required'=>'Primary Phone Number is compulsory',
             'phoneprimary.digits'=>'Phone number needs to contain 10 digits',
-            // 'phoneprimary.unique'=>'Patient with this phone number is already registered',
+            'phoneprimary.unique'=>'Patient with this phone number is already registered',
             'phonealternate.required'=>'Emergency Phone Number is compulsory',
             'phonealternate.digits'=>'Phone number needs to contain 10 digits',
             'idproof.digits'=>'Aadhar number needs to contain 12 digits',
@@ -132,7 +132,7 @@ class PatientController extends Controller
             // 'phoneprimary'=>'required|digits:10|unique:patients,phoneprimary',
             // 'phonealternate'=>'required|digits:10|unique:patients,phonealternate',
             'idproof' => 'digits:12|unique:patients,idproof',
-            'phoneprimary'=>'required|digits:10',
+            'phoneprimary'=>'required|digits:10|unique:patients,phoneprimary',
             'phonealternate'=>'required|digits:10',
             'email'=>'email'
             ],[
@@ -143,7 +143,7 @@ class PatientController extends Controller
             'allergies.required'=>'Please enter know allergies.Enter Not known otherwise.',
             'phoneprimary.required'=>'Primary Phone Number is compulsory',
             'phoneprimary.digits'=>'Phone number needs to contain 10 digits',
-            //'phoneprimary.unique'=>'Patient with this phone number is already registered',
+            'phoneprimary.unique'=>'Patient with this phone number is already registered',
             'dob.date'=>'The Date of Birth should be in mm/dd/yyyy format.',
             'dob.before'=>'The Date of Birth cannot be later than the date today.',
             'idproof.digits'=>'Invalid Aadhar Number',
@@ -157,9 +157,11 @@ class PatientController extends Controller
         //$clinic = Clinic::find($clinicid);
        // dd($clinic);
         $patient = new Patient;
-        $patient->name = Str::upper($request->name);
-        $patient->midname = Str::upper($request->midname);
-        $patient->surname = Str::upper($request->surname);
+        $patient->name = trim(Str::upper($request->name));
+        $patient->midname = trim(Str::upper($request->midname));
+        $patient->surname = trim(Str::upper($request->surname));
+        $patient->namemidsur = $request->namemidsur;
+        $patient->namesur = $request->namesur;
         if ($request->dob == "") {
             $input = '01/01/1900';
         }else{
